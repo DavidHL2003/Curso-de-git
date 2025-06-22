@@ -159,3 +159,102 @@
     ```
 
 *Listo y con esos 7 pasos ya tenemos nuestro repositorio Git Inicializado y subido a Github 😎*
+
+## *States y commits*
+
+### *Los 3 estados de Git* 🎯
+*Cuando usamos Git, los archivos de nuestro proyecto se pueden encontrar en uno de los siguientes estados:*
+
+1. ***Modified:** El archivo contiene cambios pero todavía no han sido marcados para ser confirmados. Se encuentra en el directorio de trabajo.*
+
+2. ***Staged:** Son los archivos que han sido modificados en el directorio de trabajo y se han marcado como preparados para ser confirmados en el repositorio local. Se encuentran en un área temporal transitoria. Esta acción recibe el nombre de add.*
+
+3. ***Committed:*** *El archivo se encuentra grabado en el repositorio local. Esta acción recibe el nombre de commit.*
+
+![git](img/git-estados.png)
+
+### *¿Qué es un commit?* 🤔
+* 📝 *Los commits sirven para registrar los cambios que se han producido en el repositorio, es una de las piezas más importantes para entender cómo funciona Git.*
+
+* 📷 *Piensa en los commits como si fuesen fotografías. Cada fotografía muestra el estado de todos los archivos de tu repositorio en el momento en que se hizo y cada una va firmada con el autor, la fecha, localización y otra información útil.*
+
+* 🎮 *En pocas palabras un commit es como un punto de guardado de la partida de tu juego.*
+
+***¿Cómo puedo hacer un commit?***
+
+1. *Si quieres guardar los cambios que tienes en el área de staging, puedes hacer un commit con el siguiente comando:*
+
+    ```
+    git commit
+    ```
+
+2. *Si quieres añadir directamente un mensaje sin abrir el editor, puedes usar el parámetro -m o --message:*
+
+    ```
+    git commit -m "Add new search feature"
+    ```
+
+### *¿Qué es el HEAD?*
+
+*HEAD es el puntero que referencia el punto actual del historial de cambios del repositorio en el que estás trabajando. Normalmente será el último commit de la rama en la que te encuentres pero como también puedes moverte entre commits es posible que HEAD no sea el último commit.*
+
+![git](img/branch-and-history.png)
+
+### *Otros comandos basicos de Git 💯*
+
+***Usando git add 👨‍💻*** 
+
+*El comando git add en Git se usa para agregar archivos al área de preparación. Esto significa que estás indicando qué cambios quieres incluir en el próximo commit.*
+
+* ⭐***Primera opción:*** *Puedes agregar archivos espesicos al area de preparación, esto es una buena practica.*
+    ```
+    git add archivo.txt
+    ```
+
+* 🙀***Segunda opción:*** *Puedes agregar todos los archivos al area de preparación al mismo tiempo, pero no es muy recomendado por que pueden a ver algunos archivos con errores que aún no fueron resueltos.*
+
+    ```
+    git add .
+    ```
+
+***Usando git log 👨‍💻***
+
+* ⭐***Primera opción:*** *Con git log podemos ver el lista de todos los commits realizados cronologicamente.*
+
+    ```
+    git log
+    ```
+* 🙀***Segunda opción:*** *Para mostrar los commit en una forma mas compacta o de una sola linea utilizamos el siguiente comando.*
+
+    ```
+    git log --oneline
+    ```
+* ✨*Al ejecutar el comando git log --oneline nos muestra esto.*
+
+    ```
+    23a97fc (HEAD -> main, origin/main) Add: Sección States y commits
+    b6483db Add:Inicializar un repositorio y subirlo a Github
+    e98ddd5 Add:Configuración de Git
+    0cc4583 Add:Instalación de git en Linux/MacOS/Windows
+    88eb6d0 Add:Introdicción a Git
+    8f20b19 Add:Creación del repositorio
+    ```
+***Usando git status 👨‍💻***
+* 🔥 *Este comando lo utilizamos para ver el estado actual del repositorio, es decir, qué archivos han cambiado, cuáles están listos para hacer commit y cuáles no.*
+
+    ```
+    git status
+    ```
+* ✨*Al ejecutar el comando nos muestra esto:*
+
+    ```
+    On branch main
+    Your branch is up to date with 'origin/main'.
+
+    Changes not staged for commit:
+    (use "git add <file>..." to update what will be committed)
+    (use "git restore <file>..." to discard changes in working directory)
+        modified:   README.md
+
+    no changes added to commit (use "git add" and/or "git commit -a")
+    ```
