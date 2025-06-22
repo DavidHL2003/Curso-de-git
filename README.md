@@ -258,3 +258,225 @@
 
     no changes added to commit (use "git add" and/or "git commit -a")
     ```
+## *Ramas, merge y conflictos*
+
+### *¿Que es una rama?* 🌿
+*Una rama es simplemente una versión de la colección de directorios y archivos del repositorio. Cada vez que se crea una nueva rama,* ***se crea una copia de la colección de archivos actual***.
+*A su vez, a* ***partir de esta rama puedes crear más ramas**.*
+
+```mermaid
+graph LR
+
+Cración-del-proyecto -- Rama main --> B(( ))
+B(( ))-- Rama A --> G(( ))
+G(( )) --> H(( ))
+H(( )) --> K(( ))
+B(( )) --> C(( ))
+C(( )) --> D(( ))
+D(( )) --> E(( ))
+E(( )) --> S(( ))
+B(( )) -- Rama B--> Z(( ))
+```
+
+
+### *¿Para que sirven las ramas?* 🤔
+
+*En pocas palabras una rama **sirve para aislar el trabajo de cada persona** y que, una vez concluido, se pueda integrar en el tronco de nuestro repositorio que será, dicho de otro modo, la rama principal.*
+
+### *¿Qué representa la rama master o la rama main?*
+
+*La rama master es la rama principal de un repositorio y normalmente se crea al iniciar un repositorio. ***El hecho que se llame master no es obligatorio*** y en realidad responde a una razón histórica. Simplemente siempre se le ha llamado así.*
+
+*En la actualidad servicios como GitHub o GitLab **recomiendan que la rama principal sea llamada main** para evitar connotaciones racistas.* 😅
+
+### *Creando nuestra primera rama* 🌱
+
+*El comando **git branch** nos permite crear, listar, eliminar y renombrar ramas, ahora veremos los pasos para crear nuestra primera rama.*
+
+* ***Paso 1:*** *Ingresamos a nuestra terminal de Visual Studio Code o con la que te sientas mas comodo.*
+
+* ***Paso 2:*** *Creamos la rama mi-primera-rama con el siguiente comando.*
+
+    ```
+    git branch mi-primera-rama 
+    ```
+* ***Paso 3:*** *Verificamos que se creo la rama con el siguiente comando.*
+
+    ```
+    git branch 
+    ```
+*Como podemos ver ya tenemos nuestra nueva rama creada* 😲
+
+![git](img/creacion_rama.png)
+
+* ***Paso 4:*** *Para cambiarnos a la rama que creamos utilizamos el comando git switch con el nombre de la rama creada.*
+
+    ```
+    git switch mi-primera-rama
+    ```
+*Listo ya estamos en la rama mi-primera-rama que creamos* 😁
+
+![git](img/cambiar_rama.png)
+
+* ***Dato curioso:*** *Si queremos simplificar los pasos podemos crear nuestra rama y cambiarnos a ella al mismo tiempo 😱*
+
+    ```
+    git switch -c mi-segunda-rama
+    ```
+*Listo, con el comando git switch -c con el nombre de nuestra rama por delante podemos crear la rama y cambiarnos a ella 💯*
+
+![git](img/creacion_rama_switch.png)
+
+### *Fusionando ramas* 🔀 
+
+*Las bifurcaciones de código que hemos creado en forma de ramas tendrán dos destinos:*
+
+* *Acabar en el olvido para no terminar en ningún lado.*
+* *Ser fusionada en otra rama.*
+
+*Cuando hablamos de fusión nos referimos a que los cambios que hemos realizado en la rama se integran en otra rama, de forma que el código que habíamos generado en la nueva rama se asimila en otra.*
+
+* ***📌 Nota:*** *Aunque normalmente este tipo de fusión ocurre de una rama a la rama principal, debes tener en cuenta que en realidad podemos fusionar una rama con cualquier otra rama.*
+
+***Usando git merge* ✍️**
+
+*Este comando nos permite incorporar los cambios de una rama a la rama en la que nos encontramos en ese momento. Por ejemplo, si estamos actualmente en la rama main y hacemos un git merge my-branch haremos que la rama main incorporé y fusione los cambios que había en la rama my-branch.*
+
+* *Si tienes cambios sin guardar en tu rama actual, Git no te permitirá fusionar nada hasta que los guardes, hagas commit o los elimines.*
+
+*A continuación veremos los pasos para hacer un git merge* 🔥
+
+* ***Paso 1:*** *Ingresamos a nuestra terminal de Visual Studio Code o con la que te sientas mas comodo.*
+
+* ***Paso 2:*** *Nos aseguramos que estamos en la rama destino.*
+
+    ```
+    git branch --show-current
+    ```
+*Esto nos dira en que rama estamos actualmente, en mi caso es la main.* 🌿
+
+* ***Paso 3:*** *Vamos a incorporar en main los cambios de my-branch*
+
+    ```
+    git merge my-branch
+    ```
+*Listo, si ahora ejecutamos un git log veremos que el último commit incluye la palabra Merge, este commit justamente incluye todos los cambios que se habían realizado en la rama my-branch.*
+
+
+
+```mermaid
+graph LR
+Creación-del-proyecto -- Rama main --> A(( ))
+A(( )) --> B(( ))
+
+B(( )) --Rama A--> G(( ))
+G(( )) --> H(( ))
+H(( )) -.Merge a main.-> Z(( ))
+
+B(( )) --> W(( ))
+W(( )) --> I(( ))
+I(( )) --> O(( ))
+O(( )) --> Z(( ))
+
+B(( )) --Rama B--> C(( ))
+C(( )) --Rama C--> D(( ))
+C(( )) --Rama D--> J(( ))
+
+J(( )) --> L(( ))
+L(( )) -.Merge a main.-> Z(( ))
+D(( )) --> E(( ))
+E(( )) --> F(( ))
+```
+
+*Al ejecutar el comando git merge, se crea un nuevo commit que incluye todos los cambios de la rama de origen a la rama en la que nos encontramos ahora.*
+
+***Modificando el mensaje de commit* 🚀**
+
+*Al ejecutar el git merge, Git nos ha creado un commit y lo ha grabado. Sin embargo, si queremos evitar esto. Tenemos dos opciones para que no lo haga y, así, modificar el mensaje del commit.*
+
+1. Abre el editor antes de hacer el commit
+
+    ```
+    git merge --edit
+    ```
+
+2. Evita que haga commit automáticamente
+
+    ```
+    git merge --no-commit
+    ```
+
+*Aunque puede ser útil en algunos casos muy concretos lo cierto es que lo normal es simplemente dejar que Git haga el commit automáticamente. ✅*
+
+### *Eliminando ramas* 🗑️
+
+*Después de fusionar una rama en otra rama tenemos que eliminarla para tener limpio nuestro espacio de trabajo y por que son buenas practicas.*
+
+* *Borramos la rama llamada "mi-primera-rama"*
+
+    ```
+    git branch -d mi-primera-rama
+    ```
+
+![git](img/eliminar_rama_d.png)
+
+
+* ✅ *Si la rama ya ha sido fusionada previamente, entonces todo habrá ido correctamente y nos habrá devuelto el mensaje:*
+
+    ```
+    Deleted branch mi-primera-rama (was 7c60765)
+    ```
+
+* ❌ *Si la rama no la habías fusionado (merge) previamente, entonces te devolverá un error:*
+
+    ```
+    error: The branch 'mi-primera-rama' is not fully merged.
+    If you are sure you want to delete it, run 'git branch -D mi-primera-ra\
+    ma'.
+    ```
+*En el caso que quieras borrar una rama que no ha sido fusionada previamente, tenemos que usar el parámetro -D.*
+
+* *Borramos la rama llamada "mi-primera-rama"*
+
+    ```
+    git branch -D mi-primera-rama
+    ```
+
+![git](img/eliminar_rama_D.png)
+
+*Con eso borramos la rama que no fue fusionada previamente 💯*
+
+### *Conflictos en Git* 💥
+
+*Un conflicto es una situación en la que Git no es capaz de determinar qué cambio es el que tiene que prevalecer una vez ocurra la fusión y, por lo tanto, requiere que el usuario lo resuelva.*
+
+![git](img/conflicto.png)
+
+*Dada la naturaleza de sistema distribuido, es normal que a veces ocurran conflictos al intentar fusionar dos ramas en Git. ¿Cómo iba a saber Git qué cambio es más importante que otro?*
+
+***Solucionando conflictos 🔧***
+
+1. *Primeramente localizamos nuestro archivo que tiene conflictos, nos mostrara algo como esto:*
+
+    ```
+    <<<<<<< HEAD Marca el inicio de los cambios que existe en tu rama actual.
+    ======= Es el separador entre las dos versiones de codigo en conflicto.
+    >>>>>>> Marca el final de los cambios provenientes de la otra rama que intentamos fusionar.
+    ```
+
+2. *Aquí tenemos que decidir con que cambios quedarnos, con los cambios de nuestra rama actual o con los cambios provenientes de la otra rama, tambien podemos conbinar ambos.*
+
+**📌 Nota:** Una vez que escogemos con que cambios quedarnos tenemos que eliminar los marcadores **(<<<<<<<, =======, >>>>>>>)**.
+
+3. *Marcamos el conflicto como resuelto, hacemos un git add del archivo que tenia conflictos.*
+
+    ```
+    git add nombre_del_archivo_con_conflicto
+    ```
+4. *Como ultimo paso realizamos un commit.*
+
+    ```
+    git commit -m "Conflicto resuelto"
+    ```
+
+*Con estos pasos finalizamos el proceso y el conflicto queda resuelto ✨*
