@@ -480,3 +480,325 @@ E(( )) --> F(( ))
     ```
 
 *Con estos pasos finalizamos el proceso y el conflicto queda resuelto ✨*
+
+## *Github, push pull y pull-request*
+
+![git](img/github.jpg)
+
+### *¿Para que se usa github? 🐙*
+
+*Github generalmente es utilizado con las siguientes finalidades:*
+
+* 📁 *Guardar código en la nube.*
+
+* 👥 *Colaborar en git clone https://repositorio_objetivoequipo.*
+
+* 🕒 *Llevar el historial de cambios.*
+
+* 🐛 *Reportar y solucionar errores (issues).*
+
+* 🚀 *Desplegar y mantener proyectos open source o privados.*
+
+### *¿Github y git son lo mismo?* 🤔
+
+*No, Github y Git son totalmente diferentes.*
+
+* ***Github es un servicio de alojamiento en la nube*** *de codigo fuente basado en el sistema de control de versiones que ofrece git, tambien tenemos otros servicios de alojamiento como* ***GitLab*** *y* ***Bitbucket***.
+
+
+* ***Git*** *por otro lado es un* ***sistema de control de versiones***.
+
+![git](img/diferencia_git_github.png)
+
+### *Repositorios remotos* 🌐
+
+*Los repositorios remotos son repositorios que están hospedados en un servidor y que servirá de punto de sincronización entre diferentes repositorios locales.*
+
+![git](img/repositorio_remoto.png)
+
+*Los repositorios remotos no están en nuestra máquina. Están hospedados en un servidor externo pero podremos sincronizar nuestros cambios cuando queramos.*
+
+### *Enlazar un repositorio remoto con un repositorio local 🌐 💻*
+
+*Ahora veremos paso a paso como enlazar nuestro repositorio remoto con el repositorio local.*
+
+* ***Paso 1:*** *Nos dirigimos a Gihub, entramos a la sección de repositorios y creamos un nuevo repositorio.*
+
+![git](img/creando_repositorio.png)
+
+* ***Paso 2:*** *Asignamos el nombre a nuestro repositorio y lo colocamos en publico si queremos que sea visible para otros usuarios, caso contrario en privado.*
+
+![git](img/nombre_repositorio.png)
+
+* ***Paso 3:*** *Deslizamos abajo y presionamos el boton create repository, con eso ya tenemos creado nuestro repositorio en Github.*
+
+![git](img/boton_crear_repositorio.png)
+
+* ***Paso 4:*** *Copiamos el link de nuestro repositorio de Github.*
+
+![git](img/copiar_link.png)
+
+* ***Paso 5:*** *Enlazamos el repositorio remoto con el local desde nuestra consola.*
+
+    ```
+    git remote add origin https://github.com/DavidHuancaLedezma/primer_repositorio.git
+    git push -u origin main
+    ```
+* ***Paso 6:*** *Verificamos que se enlazara correctamente.* 
+
+    ```
+    git remote -v
+    ```
+    Esto nos mostrara algo así
+    ```
+    origin  https://github.com/DavidHuancaLedezma/primer_repositorio.git (fetch)
+    origin  https://github.com/DavidHuancaLedezma/primer_repositorio.git (push)
+    ```
+* ***Paso 7:*** *Cambiamos el nombre de la rama master a main.*
+
+     ```
+    git branch -M main
+    ```
+* ***Paso 8:*** *Enviamos nuestros commits al repositorio remoto y a la rama main.*
+
+    ```
+    git push -u origin main
+    ```
+
+    Listo, con todo eso terminamos de Sincronizar nuestro repositorio remoto con el local. 🥳
+    
+
+* 📌***Nota:*** *Cuando enlazamos el repositorio con **git remote add origin**, no es obligatorio colocar el origin, puede ser otra palabra el origin es simplemente una convención que se coloca normalmente.*
+
+***Usando clone en git*** 🧬
+
+* *Para clonar un repositorio de Github unicamente utilizamos el git clone, esto nos permite tener el repositorio en nuestro entorno local y modificarlo a nuestro gusto pero no podemos subir esos cambios al repositorio del cual clonamos este, a menos que seamos colaboradores.* 👀
+    ```
+    git clone https://repositorio_objetivo
+    ```
+***Eliminando ramas del repositorio local que ya no existen***
+
+*Si una rama se elimina en el servidor, Git no borra automáticamente la referencia local, git remote prune origin nos sirve para eso:*
+
+* 🗑️ *Borra esas referencias obsoletas en nuestro repositorio local.*
+
+* 🌿 *No afecta a ramas locales ni al servidor remoto.*
+
+* 🧹 *Solo "limpia" lo que ya no existe en el origin.*
+
+    ```
+    git remote prune origin
+    ```
+
+### *¿Cual es la diferencia entre git push y git pull?* 🤔
+
+* 📤 ***git push:*** *Se utiliza para subir nuestros cambios de nuestro repositorio local al remoto.*
+    ```
+    git push
+    ```
+* 📥 ***git pull:*** *Baja las actualizaciones que hay en el repositorio remoto a nuestro repositorio local.* 
+    ```
+    git pull
+    ```
+
+***Comandos con force* ⚠️**
+
+*Podemos forzar el comando push pero esto trae consecuencias.*
+
+1. ☠️ *En el caso de git push al forzar la actualización del repositorio elimina los commits remotos que no esten en tu version local* 
+
+2. ☠️ *Es destructivo si alguien más está trabajando en la misma rama.*
+
+    ```
+    git push -f
+    ```
+
+***Uso de --set-upstream***
+
+*Con el --set-upstream asociamos una rama remota con la local para luego escribir simplemente git push en lugar de git push origin main por ejemplo:*
+
+* ⏮️ *Antes teniamos que colocar todo el comando.*
+
+    ```
+    git push origin main
+    git pull origin main
+    ```
+
+* ⚙️ *Configurando --set-upstream.*
+
+    ```
+    git push origin --set-upstream main
+    git pull origin --set-upstream main
+    ```
+* 🙀 *Despues unicamente tenemos que colocar la versión resumida.*
+
+    ```
+    git push 
+    git pull
+    ```
+
+***Uso de --all* 🎯** 
+
+*Si queremos subir todas las ramas locales a las remotas podemos hacerlo con --all, por ejemplo:*
+
+* *Supongamos que tenemos las sigientes ramas.*
+
+    ```
+    main
+    dev
+    hotfix
+    ```
+
+* *Al ejecutar git push --all es como si subieramos todo*
+    
+    ```
+    git push --all
+    ```
+
+* *Git lo interpretaria como subir todas las ramas.*
+
+    ```
+    git push origin main
+    git push origin dev
+    git push origin hotfix
+    ```
+
+### *¿Que es una pull request?* 🤔
+
+*Pull request o tambien dicho como PR es una petición de cambios supervisado que se realiza desde Github, en pocas palabras otra persona tiene que revisar y aprobar los cambios que estas intentando hacer a una rama desde otra.*
+
+![git](img/pull-request.jpeg)
+
+### *Proceso para hacer una pull request*
+
+*Para hacer una pull request tenemos que entrar a Github, al apartado de pull request de nuestro respectivo repositorio y seguir los siguientes pasos:*
+
+* ***Paso 1:*** *Creamos una nueva pull request.*
+
+![git](img/creacion_PR.png)
+
+* ***Paso 2:*** *Seleccionamos como rama base a la rama que se fusionara los cambios entrantes de la rama que escogimos como compare.*
+
+![git](img/PR_ramas.png)
+
+* ***Paso 3:*** *Agregamos un título, comentario y quien revisara la PR, posteriormente creamos la PR y esperamos su revisión.*
+
+![git](img/PR_titulo.png)
+
+* ***Paso 4:*** *La PR estara ya creada y esperando su revisión por el usuario que asignamos.*
+
+![git](img/pr_creada.png) 
+
+* ***Paso 5:*** *Una vez aceptada la PR procedemos a realizar la unión de las ramas correspondiente.*
+
+### *Hacer una buena PR*
+
+1. 🧑‍💻 ***Enfoca tu codigo en una sola cosa:*** *Hay que realizar una funcionalidad pequeña para que la persona que revise la PR pueda enterder nuestro codigo pequeño y puntual.*
+
+2. 📚 ***Explica tu pull request:*** *Hay que explicar la PR por medio de los comentarios que nos proporsiona Github y adjuntar imagenes para que facilite a la persona que esta revisando la PR.*
+
+### *Revisar una PR*
+
+*Al revisar una PR, es importante seguir los siguientes aspectos clave.*
+
+1. 💬 ***Proporcionar feedback:*** *Siempre brindar recomendaciones positivas, en el caso de encontrar errores.*
+
+2. 🧠 ***Entiende el contexto:*** *Comprende qué problema resuelve y por qué se hicieron los cambios.*
+
+3. 🧯 ***Piensa en el impacto a largo plazo:*** *Este cambio puede romper algo en el futuro?*
+
+## *Flujos de trabajo y estrategias de ramas en Git*
+
+*Las cuatro estrategias más famosas que se pueden seguir a la hora de trabajar en equipo son* ***Git Flow***, ***GitHub Flow***, ***Trunk Based Development*** *y la* *estrategia más moderna, llamada* ***Ship / Show / Ask***.
+
+📌 ***Nota:*** *Usar una buena estrategia en un proyecto puede determinar la velocidad, o incluso el éxito, de los desarrollos del equipo.*
+
+### *Git Flow* 🚀
+
+*Una de las estrategias más famosas a la hora de trabajar en equipo es Git Flow. Fue ideada por el desarrollador de Vincent Driessen en el año 2010, pero es uno de los flujos de trabajo mas antiguo que contiene las siguientes ramas:*
+
+* 🌳 ***main:*** *Su propósito es contener el código que se encuentra en producción.*
+
+* 🧑‍💻 ***develop:*** *Contiene el código en desarrollo pre-producción.*
+
+* 🌿 ***feature/nombre:*** *Cuando trabajas en una nueva característica para el proyecto.*
+
+* 🔥 ***hotfix/nombre:*** *Correcciones urgentes sobre main.*
+
+* 🔍 ***release/nombre-versión:*** *Aquí preparas el lanzamiento de una nueva versión.*
+
+![git](img/gitflow.png)
+
+*En la siguiente imagen se presentan todas las ramas necesarias para poder seguir la estrategia.*
+
+***Funcionamiento del flujo de trabajo*** 💼
+
+*El flujo de trabajo consiste en:*
+
+1. *Crear una rama develop a partir de la rama main.*
+
+2. *Crear una rama feature a partir de develop para desarrollar una nueva funcionalidad.*
+
+3. *Una vez finalizada la funcionalidad de feature se realiza una integración con develop.*
+
+4. *Al finalizar el develop, se crea una rama release desde develop para pruebas finales y preparar el lanzamiento de una nueva versión.*
+
+5. *Al terminar en el release se hace una integración a main para sacar una versión terminada del software.*
+
+6. *Las ramas hotfix se crean desde el main para arreglar bugs en producción y al terminarse, se integran a main con una nueva versión del software.*
+
+### *Github Flow* 🐙
+
+***GitHub Flow*** *es una estrategia creada por la propia ***GitHub*** y pensada especialmente para equipos y proyectos que hacen despliegues de forma regular. Se basa en la creación de Pull Requests que serán discutidas para que se integren en la rama principal.*
+
+![git](img/gtihub_flow.jpg)
+
+*GitHub Flow es una alternativa más simple de Git Flow. Tiene menos liturgias, es más fácil de entender y favorece los despliegues continuos de tu proyecto.*
+
+*GitHub Flow tiene dos tipos de ramas:*
+
+* 🌳 ***main:*** *La rama principal que contiene los cambios que se despliegan regularmente.*
+
+* 🌿 *Cualquier otra rama que quiere ser integrada en la rama principal.*
+
+### *Trunk Based Development* 🌳
+
+*El Trunk Based Development es una estrategia que se basa en que el mayor tiempo de desarrollo se concentra en una sola rama llamada trunk que corresponde a la main.*
+
+![git](img/trunk.webp)
+
+*En esta estrategia se prioriza hacer commits directamente a la rama principal. En el caso de necesitar ramas, se hacen Pull Request pequeñas y que duren poco tiempo para ser integradas lo antes posible.*
+
+***Beneficios de Trunk Based Development***
+
+* 🔁 *Integración continua y menos fricción.*
+
+* 👷 *Menos trabajo manual.*
+
+* 🚀 *Despliegue a producción continuo.*
+
+### *Ship / Show / Ask* 🍨
+
+*Ship / Show / Ask es una estrategia de ramas que combina la idea de crear Pull Request con la habilidad de seguir publicando cambios rápidamente.*
+
+![git](img/ship-show-ask.png)
+
+*Los cambios que creamos en el repositorio se categorizan en tres:*
+
+1. ⚡ *Ship: Se fusiona en la rama principal sin revisión.*
+
+2. 🔍 *Show: Abre una petición de cambios para que sean revisados por CI pero se fusiona inmediatamente.*
+
+3. ❓ *Ask: Abre una PR para discutir los cambios antes de fusionarlos*
+
+***Las reglas de Ship / Show / Ask***
+
+1. 🚀 *Tenemos un buen sistema de CI/CD, fiable y rápido, que hace que la rama principal siempre sea desplegable*
+
+2. 👥 *Confiamos en el equipo y existen buenas prácticas de desarrollo.*
+
+3. 🧑‍💻 *Las revisiones de código no son requerimientos para que las PRs sean fusionadas.*
+
+4. 🌿 *Las ramas tienen un tiempo de vida corto.*
+
+5. 🤝 *El equipo ha sabido lidiar con el ego individual, las personas confían en el resto del equipo y las pruebas automáticas pasan.*
