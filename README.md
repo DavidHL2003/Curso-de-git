@@ -802,3 +802,108 @@ E(( )) --> F(( ))
 4. 🌿 *Las ramas tienen un tiempo de vida corto.*
 
 5. 🤝 *El equipo ha sabido lidiar con el ego individual, las personas confían en el resto del equipo y las pruebas automáticas pasan.*
+
+## *Buenas prácticas en git*
+
+*Las buenas practicas son un estándar manejado en la mayoría de equipos de desarrollo, ayuda a resolver conflictos o problemas durante el desarrollo con más facilidad.*
+
+### *Frecuencias para escribir commits*
+
+ ***¿Cada cuánto debería hacer un commit?*** 🤔
+
+***A menudo*** *hay que hacer commits con las siguientes recomentaciones:*
+
+* 🐣 *Es mejor hacer commits pequeños con pequeñas mejoras que un commit con todo lo que se quiere hacer.*
+
+* 🧩 *Divide la tarea en trozos pequeños, cada trozo es un commit.*
+
+
+*Hacer commit a menudo no significa que debas hacer commits sin sentido. Graba tus progresos en iteraciones pequeñas pero que tengan un significado.*
+
+### *Escribir buenos commits* ✏️
+
+*Para escribir buenos commits usamos el verbo imperativo add, change, fix, remove al inicio de cada commit.*
+
+* ***Add:*** *Agregando una nueva funcionalidad.*
+
+* ***Change:*** *Modificando una funcionalidad existente.*
+
+* ***Fix:*** *Corrigiendo un error o bug.*
+
+* **Remove:** *Eliminando código, archivos o funcionalidades.*
+
+
+*Usa como máximo* ***50 caracteres para tu mensaje de commit***, *sé corto y conciso, si tienes mucho que explicar es probable que tu commit contenga demasiados cambios.*
+
+* ❌ *Muy largo.*
+
+    ```
+    git commit -m "Add new search feature and change typography to improve \performance"
+    ```
+
+* ✅ *Corto y compresible.*
+
+    ```
+    git commit -m "Add new search feature"
+    ```
+
+
+***Otras buenas practicas que tienes que seguir*** 📋	
+
+* *No uses punto final ni puntos suspensivos en tus mensajes.*
+
+* *El commit tiene que estar escrito todo con letra minuscula.*
+
+### *Prefijos para escribir commits* ✏️
+
+*Utilizamos prefijos para que los commits sean más semánticos, cuando un proyecto crece, es necesario que existan ciertas reglas para que el historial sea legible, a continuación veremos la lista de los prefijos utilizados:*
+
+1. ***feat:*** *para una nueva característica para el usuario.*
+
+2. ***fix:*** *para un bug que afecta al usuario.*
+
+3. ***perf:*** *para cambios que mejoran el rendimiento del sitio.*
+
+4. ***build:*** *para cambios en el sistema de build, tareas de despliegue o instalación.*
+
+5. ***ci:*** *para cambios en la integración continua.*
+
+6. ***docs:*** *para cambios en la documentación.*
+
+7. ***refactor:*** *para refactorización del código como cambios de nombre de variables o funciones.*
+
+8. ***style:*** *para cambios de formato, tabulaciones, espacios o puntos y coma, etc; no afectan al usuario.*
+
+9. ***test:*** *para tests o refactorización de uno ya existente.*
+
+### *Escribe un buen nombre de rama* ✏️
+
+*Al nombrar las ramas tenemos que seguir el mismo patron, si elegimos que todas las ramas se escriban en mayusculas entonces debemos hacer eso para todas, a plicamos la misma logica si queremos escribirlas con minisculas.*
+
+*En las ramas debemos espesificar que tipo de acción realizara como por ejemplo:*
+
+* 🐞 ***bug:*** *Cambios de código para arreglar un bug conocido.*
+
+* ✨ ***feature:*** *Desarrollo de una nueva característica.*
+
+* 🔬 ***experiment:*** *Experimentos que nunca serán fusionados.*
+
+* 🔥 ***hotfix:*** *Cambio rápido de un error crítico.*
+
+**📌 *Nota:*** *No necesariamente tiene que estar escrito en ingles las ramas, en el caso que el equipo de desarrollo sean hispanohablantes se pueden nombrar en español las ramas.*
+
+
+***IDs de JIRA*** 🆔
+
+*Aunque la convención anterior es una buena forma de identificar de qué tipo de rama se trata, es muy importante que el nombre de la rama sea único.*
+
+*El nombre de la rama a veces no da el suficiente contexto para saber realmente en qué trabaja o qué soluciona. Para ello, una buena idea es adjuntar al principio del nombre de la rama la ID del ticket.*
+
+* *Por ejemplo:*
+    ```
+    989-hotfix/fix-typo-in-name
+    1110-feature/add-new-user-form
+    1240-experiment/try-new-ui-design
+    1255-hotfix/fix-typo-in-name
+    ```
+*Ahora es mucho más fácil buscar más contexto sobre estas ramas, pese a que no quede claro con su propio nombre. 💯*
