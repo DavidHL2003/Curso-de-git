@@ -907,3 +907,16 @@ E(( )) --> F(( ))
     1255-hotfix/fix-typo-in-name
     ```
 *Ahora es mucho más fácil buscar más contexto sobre estas ramas, pese a que no quede claro con su propio nombre. 💯*
+
+## *Deshacer cambios*
+
+*Tenemos algunos casos en los cuales debemos deshacer cambios, entre ellos estan los siguientes casos:*
+
+* *Dejó de funcionar el proyecto.*
+
+* *Queremos recuperar una parte del código que eliminamos.*
+
+* *Queremos recuperar archivos que eliminamos.*
+
+### *Comandos destructivos y no destructivos 💣*
+
