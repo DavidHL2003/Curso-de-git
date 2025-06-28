@@ -939,3 +939,14 @@ E(( )) --> F(( ))
     git reset --hard HEAD~<N>
     git reset --hard <SHA>
     ```
+
+***Comandos destructivos*** ☠️
+
+*Entre los comandos destructuvos tenemos el revert:*
+
+* ***revert:*** *revierte los cambios que un commit introdujo, y crea un nuevo commit con los cambios revertidos.*
+
+    ```
+    git revert HEAD~<N>
+    git revert <SHA>
+    ```
