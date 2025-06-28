@@ -920,3 +920,22 @@ E(( )) --> F(( ))
 
 ### *Comandos destructivos y no destructivos 💣*
 
+*Los comandos destructivos afectan el historial de commits realizados mientras que los no destructivos unicamente trabajan en base al historial sin afectarlo.*
+
+***Comandos no destructivos*** 😊
+
+*Entre los comandos no destructuvos tenemos el reset para eliminar el commit el cual posee 2 opciones:*
+
+* ***soft:*** *Mantiene los cambios que ocurrieron antes de hacer commit desde donde apuntaba.*
+
+    ```
+    git reset --soft HEAD~<N>
+    git reset --soft <SHA>
+    ```
+
+* ***hard:*** *Descarta los cambios y el commit.*
+
+    ```
+    git reset --hard HEAD~<N>
+    git reset --hard <SHA>
+    ```
