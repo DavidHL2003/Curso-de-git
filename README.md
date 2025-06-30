@@ -950,3 +950,16 @@ E(( )) --> F(( ))
     git revert HEAD~<N>
     git revert <SHA>
     ```
+
+***Otros comandos*** 🎯
+
+*El git checkout no es destructivo por sí solo, pero puede causar pérdida de cambios no guardados si no tenemos cuidado.*
+
+* ***git checkout:*** *Nos permite recuperar código específico de commits.*
+
+    ```
+    git checkout <SHA>
+    ```
+
+
+**📌 *NOTA:*** *En el HEAD N reemplazamos el número de pasos para volver al commit que queremos, mientras que en SHA utlilizamos el id del commit al cual queremos volver.*
