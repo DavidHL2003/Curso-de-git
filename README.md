@@ -1001,3 +1001,18 @@ E(( )) --> F(( ))
 ***Creando un hook*** ⚡
 
 *Para crear un propio hook sólo tienes que crear un archivo nombre-del-hook en la carpeta .git/hooks y en él poner el código que quieras que se ejecute.*
+
+### *Alias* 🎯
+
+*Los alias pueden ser sencillos atajos para comandos que pueden ser usados en lugar de los nombres completos.*
+
+![git](img/alias.png)
+
+
+*Git te permite crear tus propios alias fácilmente para comandos que usas habitualmente en tu proyecto con este sistema de control de versiones.*
+
+* *Para crear tu propio comando debes usar el comando git config y ponerlo de la siguiente manera:*
+
+    ```
+    git config --global alias.[nombre-del-alias] "comando a ejecutar"
+    ```
