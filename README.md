@@ -1016,3 +1016,19 @@ E(( )) --> F(( ))
     ```
     git config --global alias.[nombre-del-alias] "comando a ejecutar"
     ```
+
+### *Trucos en git* 🪄
+
+1. 💾 *Guarda tus cambios temporalmente.*
+
+    ```
+    git stash
+    git stash -u
+    git stash pop
+    ```
+
+2. 🔁 *Aplicar cambios de commits en específico.*
+
+    ```
+    git cherry-pick <SHA>
+    ```
